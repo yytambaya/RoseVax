@@ -20,7 +20,7 @@ Key Features
 - System Information Management: Admin Users have access to manage system information, ensuring the system stays up-to-date and relevant.
 
 Default Admin Access Information:
-- **Username: admin
-- **Password: admin123
+- Username: admin
+- Password: admin123
 
 Author: Alhassan Abubakar Sadiq
