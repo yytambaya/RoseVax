@@ -2,7 +2,7 @@ Introduction
 
 Welcome to the Vaccination Record System, a comprehensive web application designed to manage and track vaccination records efficiently. Developed using PHP and MySQL Database, this system offers a user-friendly interface for recording, storing, and retrieving vaccination details of individuals. Whether it's for personal records or organizational use, our system provides a reliable solution for managing vaccination data.
 
-About the Vaccination Record System**
+About the Vaccination Record System
 
 The Vaccination Record System is built on a robust technology stack, utilizing XAMPP v3.3.0 with PHP Version 8.0.7 as the local web server. This system incorporates essential web development tools including HTML, CSS, JavaScript, jQuery, Ajax, Bootstrap, and the AdminLTE Template. By leveraging these technologies, we ensure a seamless user experience coupled with enhanced functionality.
 
