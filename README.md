@@ -8,7 +8,7 @@ The Vaccination Record System is built on a robust technology stack, utilizing X
 
 This system caters to two main types of users: Admin Users and Staff Users. Admin Users have full access to all system functionalities, including managing user accounts, vaccination records, and system information. On the other hand, Staff Users are limited to managing vaccination records within their designated area or vaccination center. They can also maintain individual records and generate printable reports as needed.
 
-Key Features**
+Key Features
 
 - Secure Login and Logout:** Users can securely log in and out of the system, ensuring data confidentiality and access control.
 - Vaccine and Center Management:Easily add, edit, or delete vaccine and vaccination center details using the intuitive CRUD functionalities.
