@@ -147,7 +147,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 						</select>
 					</div>
 					<div class="">
-						<label for="vaccinated_by">Vaccinated By</label>
+						<label for="vaccinated_by">Account Owner </label>
 						<textarea rows="2" class="form-control form-control-sm rounded-0" id="vaccinated_by" name="vaccinated_by" style="resize:none" required><?php echo isset($vaccinated_by) ? $vaccinated_by : '' ?></textarea>
 					</div>
 				</div>

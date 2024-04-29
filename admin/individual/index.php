@@ -1,6 +1,10 @@
 <div class="card card-outline card-primary">
 	<div class="card-header">
 		<h3 class="card-title">List of Individual</h3>
+		<div class="card-tools">
+            <a href="http://localhost/vaccinated/admin/?page=history/manage_record" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span> Add Individual</a>
+        </div>
+
 	</div>
 	<div class="card-body">
 		<div class="container-fluid">

@@ -76,7 +76,7 @@ $user_arr=array_column($result_user,'name','id');
                     <tr>
                         <th>DateTime</th>
                         <th>Vaccination Info</th>
-                        <th>Vaccinated By</th>
+                        <th>Account Owner</th>
                         <th>Remarks</th>
                         <th>Encoded by</th>
                     </tr>

@@ -69,7 +69,7 @@
                       <a href="<?php echo base_url ?>admin/?page=user/list" class="nav-link nav-user_list">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
-                          User List
+                          Health Professional
                         </p>
                       </a>
                     </li>

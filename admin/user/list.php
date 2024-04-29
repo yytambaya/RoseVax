@@ -59,13 +59,14 @@
 							<td><?php echo ucwords($row['name']) ?></td>
 							<td ><p class="m-0 truncate-1"><?php echo $row['username'] ?></p></td>
 							<td ><p class="m-0 truncate-1" title="<?php echo ($row['location_id'] != null && isset($location_arr[$row['location_id']])) ? $location_arr[$row['location_id']] : 'N/A' ?>"><?php echo ($row['location_id'] != null && isset($location_arr[$row['location_id']])) ? $location_arr[$row['location_id']] : 'N/A' ?></p></td>
-							<td><?php echo ($row['type'] == 1) ? 'Administrator' : 'Staff' ?></td>
+							<td><?php echo ($row['type'] == 1) ? 'Administrator' : 'Health Professional' ?></td>
 							<td align="center">
 								 <button type="button" class="btn btn-flat btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
 				                  		Action
 				                    <span class="sr-only">Toggle Dropdown</span>
 				                  </button>
 				                  <div class="dropdown-menu" role="menu">
+								  <a class="dropdown-item" href="?page=user/view_user&id=<?php echo $row['id'] ?>"><span class="fa fa-eye text-success"></span> View</a>
 				                    <a class="dropdown-item" href="?page=user/manage_user&id=<?php echo $row['id'] ?>"><span class="fa fa-edit text-primary"></span> Edit</a>
 				                    <div class="dropdown-divider"></div>
 				                    <a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>"><span class="fa fa-trash text-danger"></span> Delete</a>
