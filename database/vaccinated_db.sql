@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 28, 2024 at 04:38 PM
+-- Generation Time: Apr 29, 2024 at 02:41 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -92,7 +92,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `avatar`, `last_login`, `type`, `location_id`, `date_added`, `date_updated`) VALUES
 (1, 'Adminstrator', 'Admin', 'admin', '0192023a7bbd73250516f069df18b500', 'uploads/1624240500_avatar.png', NULL, 1, NULL, '2021-01-20 14:02:37', '2021-06-21 09:55:07'),
 (3, 'Sadiq', 'hassan', 'sadiqhassan@sample.com', '1254737c076cf867dc53d60a0364f38e', 'uploads/avatar-3.png?v=1634528899', NULL, 2, 6, '2021-10-18 11:38:39', '2024-04-28 15:20:23'),
-(4, 'Hajiya', 'Hassana', 'hassana', 'e10adc3949ba59abbe56e057f20f883e', 'uploads/avatar-4.png?v=1634529434', NULL, 2, 6, '2021-10-18 11:57:14', '2024-04-28 15:19:27');
+(4, 'Hajiya', 'Hassana', 'hassana', 'e10adc3949ba59abbe56e057f20f883e', 'uploads/avatar-4.png?v=1634529434', NULL, 2, 6, '2021-10-18 11:57:14', '2024-04-28 15:19:27'),
+(6, 'Alhassan', 'Abubakar sadiq', 'alhassan2', '0192023a7bbd73250516f069df18b500', NULL, NULL, 2, 7, '2024-04-29 03:08:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -147,6 +148,13 @@ CREATE TABLE `vaccine_list` (
   `status` tinyint(1) NOT NULL DEFAULT 1,
   `date_created` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `vaccine_list`
+--
+
+INSERT INTO `vaccine_list` (`id`, `name`, `status`, `date_created`) VALUES
+(7, 'Vaccine A', 1, '2024-04-29 12:39:56');
 
 --
 -- Indexes for dumped tables
@@ -213,7 +221,7 @@ ALTER TABLE `system_info`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `vaccination_location_list`
@@ -231,7 +239,7 @@ ALTER TABLE `vaccine_history_list`
 -- AUTO_INCREMENT for table `vaccine_list`
 --
 ALTER TABLE `vaccine_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
