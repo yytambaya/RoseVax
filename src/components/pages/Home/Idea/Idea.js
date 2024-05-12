@@ -1,32 +1,32 @@
 import React, { useContext, useEffect } from "react"
 import { Home } from "../../../common/Base/Home"
-import { LoadingResource } from "./LoadingResource"
-import { ResourceCard } from "./ResourceCard"
+import { IdeaContext } from "../../../../context/ideaContext/IdeaContext"
+import { LoadingIdea } from "./LoadingIdea"
+//import { IdeaCard } from "./IdeaCard"
 import { Grid } from "@material-ui/core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons"
 import { UserContext } from "../../../../context/userContext/UserContext"
-import { ResourceContext } from "../../../../context/resourcesContext/ResourceContext"
 
-export const Resource = () => {
-  const resourceContext = useContext(ResourceContext)
+export const Idea = () => {
+  const ideaContext = useContext(IdeaContext)
   const userContext = useContext(UserContext)
   useEffect(() => {
-    resourceContext.getAllResources()
-    //alert(resourceContext.resource)
+    ideaContext.getAllIdeas()
+    //alert(IdeaContext.Idea)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <Home>
       <div className="px-2">
-        {resourceContext.loading || userContext.loading ? (
-          <LoadingResource />
-        ) : resourceContext.resource.length > 0 ? (
-          resourceContext.resource.map((resource) => {
-            console.log(resourceContext.resource)
+        {ideaContext.loading || userContext.loading ? (
+          <LoadingIdea />
+        ) : ideaContext.idea.length > 0 ? (
+          ideaContext.idea.map((idea) => {
+            // console.log(IdeaContext.Idea)
             return (
-              <div key={resource._id}>
-                <ResourceCard resource={resource} />
+              <div key={idea._id}>
+                {/*<IdeaCard idea={idea} />*/}
               </div>
             )
           })
@@ -39,7 +39,7 @@ export const Resource = () => {
               justifyContent: "center",
             }}
           >
-            <Grid
+            <Grid className="bg-danger"
               container
               spacing={3}
               direction="column"
@@ -47,7 +47,7 @@ export const Resource = () => {
               alignItems="center"
             >
               <FontAwesomeIcon icon={faPencilAlt} fontSize="large" />
-              <h6 className="mt-2">No resource out there</h6>
+              <h6 className="mt-2">No Idea out there</h6>
             </Grid>
           </div>
         )}

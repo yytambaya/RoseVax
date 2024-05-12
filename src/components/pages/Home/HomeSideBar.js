@@ -94,7 +94,12 @@ export const HomeSideBar = () => {
             />
           </ListItem>
           
-          <ListItem button>
+          <ListItem 
+          button
+          onClick={() => {
+            history.push("/ideas")
+          }}
+          >
             <ListItemIcon>
               <Highlight />
             </ListItemIcon>

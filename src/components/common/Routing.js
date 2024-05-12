@@ -27,6 +27,9 @@ import { Bookmarks } from "../pages/Home/Bookmarks/Bookmarks"
 import { CampusSignup } from "../Login/CampusSignup"
 import { Notice } from "../pages/Home/Notice/Notice"
 import { Resource } from "../pages/Home/Resources/Resource"
+import { Polls } from "../pages/Home/Poll/Poll"
+import { AdminPoll } from "../pages/Home/Poll/AdminPoll"
+import { Idea } from "../pages/Home/Idea/Idea"
 // import { Feedback } from "../pages/Feedback/Feedback"
 
 export const Routing = () => {
@@ -193,8 +196,9 @@ export const Routing = () => {
             <PrivateRoute exact path="/blogs" component={Blog} />
             <PrivateRoute exact path="/events" component={Blog} />
             <PrivateRoute exact path="/resources" component={Resource} />
-            <PrivateRoute exact path="/polls" component={Blog} />
-            <PrivateRoute exact path="/profile/:userId" component={Profile} />
+            <PrivateRoute exact path="/polls" component={AdminPoll} />
+            <PrivateRoute exact path="/ideas" component={Idea} />
+            <PrivateRoute exact path="/profile/:userId" component={SettingsPrivacy} />
             <PrivateRoute exact path="/fellows" component={Friends} />
             <PrivateRoute exact path="/notices" component={Notice} />
             <PrivateRoute

@@ -9,6 +9,7 @@ import { PollState } from "./context/pollContext/PollState"
 import { PostState } from "./context/postContext/PostState"
 import { UserState } from "./context/userContext/UserState"
 import { ResourceState } from "./context/resourcesContext/ResourceState"
+import { IdeaState } from "./context/ideaContext/IdeaState"
 
 export const App = () => {
   return (
@@ -18,11 +19,13 @@ export const App = () => {
           <PostState>
             <BlogState>
               <ResourceState>
+              <IdeaState>
               <AdsState>
                 <NoticeState>
                   <Routing />
                 </NoticeState>
               </AdsState>
+              </IdeaState>
               </ResourceState>
             </BlogState>
           </PostState>

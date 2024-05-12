@@ -122,21 +122,34 @@ export const Profile = ({ match }) => {
                           : null
                       }
                     >
-                      <Avatar
+                      {/*<Avatar
                         style={{ width: "150px", height: "150px" }}
                         alt={userContext.user.name}
                         src={`${API}/pic/user/${userContext.user._id}`}
-                      />
+                      />*/}
                     </IconButton>
                   </Grid>
                 </Grid>
                 <Grid item xs={12} md={7}>
                   <Grid container justify="center">
                     <CardContent>
+                    <Avatar
+                        style={{ width: "150px", height: "150px" }}
+                        alt={userContext.user.name}
+                        src={`${API}/pic/user/${userContext.user._id}`}
+                      />
                       <Typography gutterBottom variant="h4" component="h2">
                         {userContext.user.name}
                       </Typography>
-                      <Grid container spacing={3} justify="flex-start">
+                      <Typography gutterBottom variant="h6" component="h2">
+                        {userContext.user.email}
+                      </Typography>
+                      <Typography gutterBottom variant="h6" component="h2">
+                        {"Admin"}
+                      </Typography>
+                      
+                      
+                      {/*<Grid container spacing={3} justify="flex-start">
                         <Grid item>
                           <h6>
                             <b>{dataPost.length} </b>Post
@@ -152,14 +165,14 @@ export const Profile = ({ match }) => {
                             <b>{userContext.user.friendList.length} </b>Friends
                           </h6>
                         </Grid>
-                      </Grid>
-                      <Typography
+                      </Grid>*/}
+                      {/*<Typography
                         variant="body2"
                         color="textSecondary"
                         component="p"
                       >
                         {userContext.user.intro}
-                      </Typography>
+                      </Typography>*/}
                     </CardContent>
                   </Grid>
                 </Grid>
@@ -182,7 +195,7 @@ export const Profile = ({ match }) => {
             <div className="mt-3">
               <Grid container spacing={3} justify="space-around">
                 <Grid item xs={12} md={4}>
-                  <Card variant="elevation" elevation={3}>
+                  {/*<Card variant="elevation" elevation={3}>
                     <CardContent>
                       <Grid
                         container
@@ -219,7 +232,7 @@ export const Profile = ({ match }) => {
                         {userContext.user.branch}
                       </Typography>
 
-                      <Typography variant="body2">
+                      {/*<Typography variant="body2">
                         Gautam Buddha University
                       </Typography>
                     </CardContent>
@@ -237,8 +250,8 @@ export const Profile = ({ match }) => {
                         ) : null}
                       </Grid>
                     </CardActions>
-                  </Card>
-                  <Card
+                    </Card>*/}
+                  {/*<Card
                     variant="elevation"
                     elevation={3}
                     className="mt-3 text-center"
@@ -252,9 +265,9 @@ export const Profile = ({ match }) => {
                         {new Date(userContext.user.createdAt).toDateString()}
                       </Typography>
                     </CardContent>
-                  </Card>
+                    </Card>*/}
                 </Grid>
-                <Grid item md={8} xs={12}>
+                {/*<Grid item md={8} xs={12}>
                   {userContext.user._id === authContext.user._id ? (
                     <InputBox />
                   ) : null}
@@ -323,7 +336,7 @@ export const Profile = ({ match }) => {
                   ) : (
                     <div> loading</div>
                   )}
-                </Grid>
+                </Grid>*/}
               </Grid>
             </div>
           </Grid>

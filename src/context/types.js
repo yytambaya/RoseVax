@@ -52,8 +52,17 @@ export const POLL_LOADING = "poll_loading"
 export const POLL_GET_ALL = "poll_get_all"
 export const POLL_ERROR = "poll_error"
 export const POLL_CREATE = "poll_create"
+export const POLL_SUCCESS = "poll_success"
+
 
 //Ads
 export const ADS_LOADING = "ads_loading"
 export const ADS_GET_ALL = "ads_get_all"
 export const ADS_ERROR = "ads_error"
+
+//POLL
+export const IDEA_LOADING = "idea_loading"
+export const IDEA_GET_ALL = "idea_get_all"
+export const IDEA_ERROR = "idea_error"
+export const IDEA_CREATE = "idea_create"
+export const IDEA_SUCCESS = "idea_success"

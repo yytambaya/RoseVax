@@ -45,7 +45,7 @@ export const ProfilePictureModal = ({ show, onHide, userContext }) => {
       }
     } catch (error) {
       setLoading(false)
-      alert(error.response.data.errorMsg)
+      //alert(error.response.data.errorMsg)
     }
   }
   return (

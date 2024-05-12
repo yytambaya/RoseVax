@@ -6,6 +6,7 @@ import CameraIcon from "@material-ui/icons/Camera"
 import { LoadingPost } from "./LoadingPost"
 import { Grid } from "@material-ui/core"
 import { UserContext } from "../../../../context/userContext/UserContext"
+import Moment from "react-moment"
 
 export const Post = () => {
   const postContext = useContext(PostContext)
@@ -23,7 +24,14 @@ export const Post = () => {
           postContext.post.map((post) => {
             return (
               <div key={post._id}>
-                <PostCard post={post} />
+                {<PostCard post={post} />}
+                {/*<div className=" bg-success py-2 px-2 mb-4">
+                  <div>
+                    <span className=" text-xl-left text-primary">{post.content}</span>
+                    <span className=" text-sm-right text-secondary"><Moment fromNow>{post.createdAt}</Moment></span>
+                  </div>
+                  <div className=" text-sm-left font-italic text-secondary">Posted by {post.user.name}</div>
+              </div>*/}
               </div>
             )
           })

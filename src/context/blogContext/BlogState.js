@@ -64,7 +64,7 @@ export const BlogState = ({ children }) => {
         }
       )
       if (response) {
-        alert(response)
+        //alert(response)
         dispatch({
           type: BLOG_CREATE,
           payload: "Successfully created!",
@@ -73,7 +73,7 @@ export const BlogState = ({ children }) => {
         // console.log(response.data)
       }
     } catch (error) {
-      alert(error)
+      //alert(error)
       // console.log(error.response)
       dispatch({
         type: BLOG_ERROR,

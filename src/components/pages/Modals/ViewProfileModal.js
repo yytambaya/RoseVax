@@ -172,7 +172,7 @@ import {
                   />
                 </Grid>
                 <Grid item xs={4}>
-                  <TextField
+                  {/*<TextField
                     disabled
                     variant="outlined"
                     value={userDetails.rollno}
@@ -183,10 +183,10 @@ import {
                     fullWidth
                     label="Roll No."
                     className="mt-3"
-                  />
+                  />*/}
                 </Grid>
                 <Grid item xs={2}>
-                  <TextField
+                  {/*<TextField
                     disabled
                     variant="outlined"
                     name="year"
@@ -199,10 +199,10 @@ import {
                     label="Year"
                     className="mt-3"
                     onChange={handleChangeData}
-                  />
+                  />*/}
                 </Grid>
               </Grid>
-              <TextField
+              {/*<TextField
                 disabled
                 name="branch"
                 variant="outlined"
@@ -215,8 +215,8 @@ import {
                 fullWidth
                 label="Branch"
                 className="mt-3"
-              />
-              <TextField
+              />*/}
+              {/*<TextField
                 disabled
                 variant="outlined"
                 size="small"
@@ -231,7 +231,7 @@ import {
                 rows={3}
                 value={userDetails.intro}
                 label="Intro"
-              />
+              />*/}
             </form>
           </div>
         </div>

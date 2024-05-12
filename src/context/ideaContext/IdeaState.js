@@ -2,32 +2,32 @@ import axios from "axios"
 import React, { useReducer } from "react"
 import { API } from "../../utils/proxy"
 import {
-  RESOURCE_CREATE,
-  RESOURCE_ERROR,
-  RESOURCE_GET_ALL,
-  RESOURCE_LOADING,
-  RESOURCE_SUCCESS,
+  IDEA_CREATE,
+  IDEA_ERROR,
+  IDEA_GET_ALL,
+  IDEA_LOADING,
+  IDEA_SUCCESS,
 } from "../types"
-import ResourceReducer from "./ResourceReducer"
-import { ResourceContext } from "./ResourceContext"
+import IdeaReducer from "./IdeaReducer"
+import { IdeaContext } from "./IdeaContext"
 
-export const ResourceState = ({ children }) => {
+export const IdeaState = ({ children }) => {
   const initialState = {
-    resource: [],
+    idea: [],
     error: "",
     success: "",
     loading: true,
   }
-  const [state, dispatch] = useReducer(ResourceReducer, initialState)
+  const [state, dispatch] = useReducer(IdeaReducer, initialState)
 
-  const getAllResources = async () => {
+  const getAllIdeas = async () => {
     try {
       dispatch({
-        type: RESOURCE_LOADING,
+        type: IDEA_LOADING,
         payload: true,
       })
       // console.log(state)
-      const response = await axios.get(`${API}/resources`, {
+      const response = await axios.get(`${API}/ideas`, {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("_token"))}`,
         },
@@ -35,26 +35,26 @@ export const ResourceState = ({ children }) => {
       //console.log(response.data)
       //alert(JSON.stringify(response.data))
       dispatch({
-        type: RESOURCE_GET_ALL,
+        type: IDEA_GET_ALL,
         payload: response.data,
       })
     } catch (error) {
       dispatch({
-        type: RESOURCE_ERROR,
+        type: IDEA_ERROR,
         payload: error.response?.data.errorMsg,
       })
     }
   }
 
-  const createResource = async (formData, userId) => {
+  const createIdea = async (formData, userId) => {
     try {
       dispatch({
-        type: RESOURCE_LOADING,
+        type: IDEA_LOADING,
         payload: true,
       })
 
       const response = await axios.post(
-        `${API}/create/resource/${userId}`,
+        `${API}/create/idea/${userId}`,
         formData,
         {
           headers: {
@@ -67,26 +67,26 @@ export const ResourceState = ({ children }) => {
       if (response) {
         //alert(response)
         dispatch({
-          type: RESOURCE_CREATE,
+          type: IDEA_CREATE,
           payload: "Successfully created!",
         })
-        getAllResources()
+        getAllIdeas()
         // console.log(response.data)
       }
     } catch (error) {
       // console.log(error.response)
       //alert(error)
       dispatch({
-        type: RESOURCE_ERROR,
+        type: IDEA_ERROR,
         payload: error.response.data.errorMsg,
       })
     }
   }
 
-  const deleteResource = async (userID, resourceId) => {
+  const deleteIdea = async (userID, ideaId) => {
     try {
       const response = await axios.delete(
-        `${API}/delete/resource/${userID}/${resourceId}`,
+        `${API}/delete/idea/${userID}/${ideaId}`,
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(
@@ -97,23 +97,23 @@ export const ResourceState = ({ children }) => {
       )
       if (response) {
         dispatch({
-          type: RESOURCE_SUCCESS,
+          type: IDEA_SUCCESS,
           payload: response.data.message,
         })
-        getAllResources()
+        getAllIdeas()
       }
     } catch (error) {
       dispatch({
-        type: RESOURCE_ERROR,
+        type: IDEA_ERROR,
         payload: error.response.data.errorMsg,
       })
     }
   }
 
-  const updateResource = async (formData, userId, resourceId) => {
+  const updateIdea = async (formData, userId, ideaId) => {
     try {
       const response = await axios.put(
-        `${API}/update/resource/${userId}/${resourceId}`,
+        `${API}/update/idea/${userId}/${ideaId}`,
         formData,
         {
           headers: {
@@ -125,42 +125,42 @@ export const ResourceState = ({ children }) => {
       )
       if (response) {
         dispatch({
-          type: RESOURCE_CREATE,
+          type: IDEA_CREATE,
           payload: "Updated Successfully!",
         })
-        getAllResources()
+        getAllIdeas()
       }
     } catch (error) {
       dispatch({
-        type: RESOURCE_ERROR,
+        type: IDEA_ERROR,
         payload: error.response.data.errorMsg,
       })
     }
   }
 
-  const getAllResourcesByUserId = async (userId) => {
+  const getAllIdeasByUserId = async (userId) => {
     try {
-      const response = await axios.get(`${API}/${userId}/resources`, {
+      const response = await axios.get(`${API}/${userId}/ideas`, {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("_token"))}`,
         },
       })
       dispatch({
-        type: RESOURCE_SUCCESS,
+        type: IDEA_SUCCESS,
       })
       const { data } = response
       return data
     } catch (error) {
       dispatch({
-        type: RESOURCE_ERROR,
+        type: IDEA_ERROR,
         payload: error.response.data.errorMsg,
       })
     }
   }
 
-  const upVoteResource = async (resourceId, userId) => {
+  const upVoteIdea = async (ideaId, userId) => {
     await axios.put(
-      `${API}/resource/upvote/${userId}/${resourceId}`,
+      `${API}/idea/upvote/${userId}/${ideaId}`,
       {},
       {
         headers: {
@@ -171,15 +171,15 @@ export const ResourceState = ({ children }) => {
     try {
     } catch (error) {
       dispatch({
-        type: RESOURCE_ERROR,
+        type: IDEA_ERROR,
         payload: error.response.data.errorMsg,
       })
     }
   }
-  const downVoteResource = async (resourceId, userId) => {
+  const downVoteIdea = async (ideaId, userId) => {
     try {
       await axios.put(
-        `${API}/resource/downvote/${userId}/${resourceId}`,
+        `${API}/idea/downvote/${userId}/${ideaId}`,
         {},
         {
           headers: {
@@ -191,15 +191,15 @@ export const ResourceState = ({ children }) => {
       )
     } catch (error) {
       dispatch({
-        type: RESOURCE_ERROR,
+        type: IDEA_ERROR,
         payload: error.response.data.errorMsg,
       })
     }
   }
-  const addComment = async (resourceId, userId, comment) => {
+  const addComment = async (ideaId, userId, comment) => {
     try {
       const response = await axios.put(
-        `${API}/resource/comment/${userId}/${resourceId}`,
+        `${API}/idea/comment/${userId}/${ideaId}`,
         { text: comment },
         {
           headers: {
@@ -210,49 +210,49 @@ export const ResourceState = ({ children }) => {
         }
       )
       if (response) {
-        getAllResources()
+        getAllIdeas()
       }
     } catch (error) {
       dispatch({
-        type: RESOURCE_ERROR,
+        type: IDEA_ERROR,
         payload: error.response.data.errorMsg,
       })
     }
   }
 
-  const countShare = async (resourceId) => {
+  const countShare = async (ideaId) => {
     try {
-      const response = await axios.get(`${API}/share/resource/${resourceId}`)
+      const response = await axios.get(`${API}/share/idea/${ideaId}`)
       if (response) {
         return response.data
       }
     } catch (error) {
       dispatch({
-        type: RESOURCE_ERROR,
+        type: IDEA_ERROR,
         payload: error.response.data.errorMsg,
       })
     }
   }
 
   return (
-    <ResourceContext.Provider
+    <IdeaContext.Provider
       value={{
-        resource: state.resource,
+        idea: state.idea,
         loading: state.loading,
         error: state.error,
         success: state.success,
-        getAllResources,
-        createResource,
-        updateResource,
-        deleteResource,
-        getAllResourcesByUserId,
-        upVoteResource,
-        downVoteResource,
+        getAllIdeas,
+        createIdea,
+        updateIdea,
+        deleteIdea,
+        getAllIdeasByUserId,
+        upVoteIdea,
+        downVoteIdea,
         addComment,
         countShare,
       }}
     >
       {children}
-    </ResourceContext.Provider>
+    </IdeaContext.Provider>
   )
 }

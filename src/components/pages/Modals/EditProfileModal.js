@@ -135,7 +135,7 @@ export const EditProfileModal = ({ show, onHide }) => {
         >
           {userContext.user.role === 0 && (
             <Typography variant="button" color="primary" gutterBottom>
-              Student Profile
+              Admin Profile
             </Typography>
           )}
           {userContext.user.role === 1 && (
@@ -172,8 +172,8 @@ export const EditProfileModal = ({ show, onHide }) => {
                   className="mt-3"
                 />
               </Grid>
-              <Grid item xs={4}>
-                <TextField
+              <Grid item xs={6}>
+                {/*<TextField
                   disabled
                   variant="outlined"
                   value={userDetails.rollno}
@@ -184,9 +184,9 @@ export const EditProfileModal = ({ show, onHide }) => {
                   fullWidth
                   label="Roll No."
                   className="mt-3"
-                />
+                />*/}
               </Grid>
-              <Grid item xs={2}>
+              {/*<Grid item xs={2}>
                 <TextField
                   variant="outlined"
                   name="year"
@@ -200,9 +200,9 @@ export const EditProfileModal = ({ show, onHide }) => {
                   className="mt-3"
                   onChange={handleChangeData}
                 />
-              </Grid>
+              </Grid>*/}
             </Grid>
-            <TextField
+            {/*<TextField
               name="branch"
               variant="outlined"
               value={userDetails.branch}
@@ -214,7 +214,7 @@ export const EditProfileModal = ({ show, onHide }) => {
               fullWidth
               label="Branch"
               className="mt-3"
-            />
+            />*/}
             <TextField
               variant="outlined"
               size="small"
@@ -226,8 +226,9 @@ export const EditProfileModal = ({ show, onHide }) => {
               className="mt-3"
               fullWidth
               multiline
+              disabled
               rows={3}
-              value={userDetails.intro}
+              value={"Admin"}
               label="Intro"
             />
           </form>

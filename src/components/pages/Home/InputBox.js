@@ -15,6 +15,9 @@ import { PollContext } from "../../../context/pollContext/PollContext"
 import { AdsContext } from "../../../context/adsContext/AdsContext"
 import { AdsModal } from "../Modals/AdsModal"
 import { ResourceContext } from "../../../context/resourcesContext/ResourceContext"
+import { Highlight } from "@material-ui/icons"
+import { IdeaModal } from "../Modals/IdeaModal"
+import { IdeaContext } from "../../../context/ideaContext/IdeaContext"
 
 export const InputBox = () => {
   const authContext = useContext(AuthContext)
@@ -22,11 +25,14 @@ export const InputBox = () => {
   const blogContext = useContext(BlogContext)
   const pollContext = useContext(PollContext)
   const adsContext = useContext(AdsContext)
+  const ideaContext = useContext(IdeaContext)
   const resourceContext = useContext(ResourceContext)
   const [showPost, setShowPost] = useState(false)
   const [showBlog, setShowBlog] = useState(false)
   const [showPoll, setShowPoll] = useState(false)
   const [showAds, setShowAds] = useState(false)
+  const [showIdea, setShowIdea] = useState(false)
+
   const handleModalPoll = () => {
     setShowPoll(!showPoll)
   }
@@ -42,6 +48,13 @@ export const InputBox = () => {
     // console.log(showBlog)
     setShowAds(!showAds)
   }
+  const handleModalIdea = () => {
+    // console.log(showBlog)
+    setShowIdea(!showIdea)
+  }
+
+
+
 
   return (
     <>
@@ -74,13 +87,25 @@ export const InputBox = () => {
       )}
       {showPoll && (
         <PollModal
-          modalTitle="Create poll"
+          modalTitle="New poll"
           show={showPoll}
           pollFunction={pollContext.createPoll}
           poll={undefined}
           handleModal={handleModalPoll}
         />
       )}
+
+    {showIdea && (
+        <IdeaModal
+          modalTitle="New Idea"
+          show={showIdea}
+          ideaFunction={ideaContext.createPoll}
+          idea={undefined}
+          handleModal={handleModalPoll}
+        />
+      )}
+      
+
       <Paper elevation={3} variant="elevation" className="p-3 mb-3">
         <Grid
           container
@@ -139,6 +164,11 @@ export const InputBox = () => {
               Poll
             </Button>
           </Grid>
+          {/*<Grid item>
+            <Button onClick={handleModalIdea} startIcon={<Highlight />}>
+              SUBMIT IDEAS
+            </Button>
+          </Grid>*/}
         </Grid>
       </Paper>
     </>

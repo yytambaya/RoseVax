@@ -2,7 +2,7 @@ import React, { useReducer } from "react"
 import { PollContext } from "./PollContext"
 import axios from "axios"
 import { API } from "../../utils/proxy"
-import { POLL_CREATE, POLL_ERROR, POLL_GET_ALL, POLL_LOADING } from "../types"
+import { POLL_CREATE, POLL_ERROR, POLL_GET_ALL, POLL_LOADING, POLL_SUCCESS } from "../types"
 import Pollreducer from "./Pollreducer"
 
 export const PollState = ({ children }) => {
@@ -24,6 +24,7 @@ export const PollState = ({ children }) => {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("_token"))}`,
         },
       })
+      console.log(response)
       dispatch({
         type: POLL_GET_ALL,
         payload: response.data,
@@ -32,7 +33,7 @@ export const PollState = ({ children }) => {
       // console.log(error)
       dispatch({
         type: POLL_ERROR,
-        payload: error.response.data.errorMsg,
+        payload: "error.response.data.errorMsg",
       })
     }
   }
@@ -58,9 +59,11 @@ export const PollState = ({ children }) => {
         type: POLL_CREATE,
         payload: "Successfully created!",
       })
-      console.log(response)
+      getAllPolls()
+      //alert(response)
     } catch (error) {
       // console.log(error)
+      //alert(error)
       dispatch({
         type: POLL_ERROR,
         payload: error.response.data.errorMsg,
@@ -125,20 +128,81 @@ export const PollState = ({ children }) => {
     }
   }
 
-  return (
-    <PollContext.Provider
-      value={{
-        polls: state.polls,
-        error: state.error,
-        loading: state.loading,
-        getAllPolls,
-        markPollNo,
-        markPollYes,
-        skipPoll,
-        createPoll,
-      }}
-    >
-      {children}
-    </PollContext.Provider>
-  )
+
+
+
+const deletePoll = async (userID, pollId) => {
+  try {
+    const response = await axios.delete(
+      `${API}/delete/poll/${userID}/${pollId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("_token")
+          )}`,
+        },
+      }
+    )
+    if (response) {
+      dispatch({
+        type: POLL_SUCCESS,
+        payload: response.data.message,
+      })
+      getAllPolls()
+    }
+  } catch (error) {
+    dispatch({
+      type: POLL_ERROR,
+      payload: error.response.data.errorMsg,
+    })
+  }
+}
+
+const updatePoll = async (userId, pollId, formData) => {
+  try {
+    const response = await axios.put(
+      `${API}/update/poll/${userId}/${pollId}`,
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("_token")
+          )}`,
+        },
+      }
+    )
+    if (response) {
+      dispatch({
+        type: POLL_CREATE,
+        payload: "Updated Successfully!",
+      })
+      getAllPolls()
+    }
+  } catch (error) {
+    dispatch({
+      type: POLL_ERROR,
+      payload: error.response.data.errorMsg,
+    })
+  }
+}
+
+return (
+  <PollContext.Provider
+    value={{
+      polls: state.polls,
+      error: state.error,
+      loading: state.loading,
+      getAllPolls,
+      markPollNo,
+      markPollYes,
+      skipPoll,
+      createPoll,
+      updatePoll,
+      deletePoll
+    }}
+  >
+    {children}
+  </PollContext.Provider>
+)
+
 }

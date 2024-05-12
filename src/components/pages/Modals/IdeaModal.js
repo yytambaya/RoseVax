@@ -4,42 +4,41 @@ import { Form, Modal } from "react-bootstrap"
 import { AuthContext } from "../../../context/authContext/authContext"
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate"
 
-export const AdsModal = ({
+export const IdeaModal = ({
   show,
   handleModal,
-  resourceFunction,
+  ideaFunction,
   modalTitle,
-  ads,
+  idea,
 }) => {
   const authContext = useContext(AuthContext)
   const [uploadFile, setUploadFile] = useState(null)
-  const [preview, setPreview] = useState(ads === undefined ? "" : ads.picture)
-  const [content, setContent] = useState(ads === undefined ? "" : ads.content)
-  const [title, setTitle] = useState(ads === undefined ? "" : ads.title)
-  const [link, setLink] = useState(ads === undefined ? "" : ads.link)
+  const [preview, setPreview] = useState(idea === undefined ? "" : idea.picture)
+  const [content, setContent] = useState(idea === undefined ? "" : idea.content)
+  const [title, setTitle] = useState(idea === undefined ? "" : idea.title)
   const [titleError, setTitleError] = useState("")
-  const [linkError, setLinkError] = useState("")
+  const [contentError, setContentError] = useState("")
 
   console.log(preview)
   const handleForm = async (e) => {
     e.preventDefault()
-    if(title != "" && link != ""){
+    if(title != "" && content != ""){
       //alert("Perfect")
       const formData = new FormData()
       formData.append("user", authContext.user._id)
       formData.append("title", title)
-      formData.append("link", link)
+      formData.append("content", content)
       formData.append("picture", uploadFile)
-      ads
-        ? resourceFunction(formData, authContext.user._id, ads._id)
-        : resourceFunction(formData, authContext.user._id)
+      idea
+        ? ideaFunction(formData, authContext.user._id, idea._id)
+        : ideaFunction(formData, authContext.user._id)
       handleModal()
     }else{
       if(title == ""){
         setTitleError("invalid title")
       }
-      if(link == ""){
-        setLinkError("invalid link")
+      if(content == ""){
+        setContentError("invalid link")
       }
     } 
   }
@@ -84,11 +83,11 @@ export const AdsModal = ({
                   size="small"
                   fullWidth
                   variant="outlined"
-                  placeholder="resource link"
-                  value={link}
-                  onChange={(e) => setLink(e.target.value)}
+                  placeholder="idea link"
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
                 />
-                {linkError && <p className=" text-danger mb-3">{linkError}</p>}
+                {contentError && <p className=" text-danger mb-3">{contentError}</p>}
               </Grid>
               {/*<Grid item>
                 <Form.File

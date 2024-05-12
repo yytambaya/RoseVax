@@ -13,6 +13,7 @@ export const Blog = () => {
   const userContext = useContext(UserContext)
   useEffect(() => {
     blogContext.getAllBlogs()
+    //alert(blogContext.blog)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
@@ -38,7 +39,7 @@ export const Blog = () => {
               justifyContent: "center",
             }}
           >
-            <Grid
+            <Grid className="bg-danger"
               container
               spacing={3}
               direction="column"

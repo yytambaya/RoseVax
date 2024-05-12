@@ -37,6 +37,7 @@ import { useHistory } from "react-router-dom"
 import { UserContext } from "../../../../context/userContext/UserContext"
 import { API } from "../../../../utils/proxy"
 import { ResourceContext } from "../../../../context/resourcesContext/ResourceContext"
+import { AdsModal } from "../../Modals/AdsModal"
 
 export const ResourceCard = ({ resource }) => {
   const userContext = useContext(UserContext)
@@ -45,15 +46,15 @@ export const ResourceCard = ({ resource }) => {
   const resourceContext = useContext(ResourceContext)
   const [vote, setVote] = useState(false)
   const [comment, setComment] = useState("")
-  const [shareCount, setShareCount] = useState(resource.shareCount)
-  const [countVote, setCountVote] = useState(resource.upvotes.length)
+  //const [shareCount, setShareCount] = useState(resource.shareCount)
+  //const [countVote, setCountVote] = useState(resource.upvotes.length)
   const [moreOption, setMoreOption] = useState(null)
   const handleMoreOption = (e) => {
     setMoreOption(e.currentTarget)
   }
-  const [bookmarkStatus, setBookmarkStatus] = useState(false)
-  const [sendBtnColor, setSendBtnColor] = useState("grey")
-  useEffect(() => {
+  //const [bookmarkStatus, setBookmarkStatus] = useState(false)
+  //const [sendBtnColor, setSendBtnColor] = useState("grey")
+  {/*useEffect(() => {
     resource.upvotes.filter((likeId) => {
       if (likeId === authContext.user._id) {
         setVote(true)
@@ -62,8 +63,9 @@ export const ResourceCard = ({ resource }) => {
       }
       return 0
     })
-  }, [authContext.user._id, resource.upvotes])
-  const handleVote = () => {
+  }, [authContext.user._id, resource.upvotes])*/}
+
+  {/*const handleVote = () => {
     if (!vote) {
       resourceContext.upVoteResource(resource._id, authContext.user._id)
       setCountVote(countVote + 1)
@@ -73,8 +75,10 @@ export const ResourceCard = ({ resource }) => {
       setCountVote(countVote - 1)
       setVote(false)
     }
-  }
-  useEffect(() => {
+  }*/}
+
+  {/*useEffect(() => {
+    
     if (!userContext.loading) {
       // console.log(userContext.user.bookmark.resource)
 
@@ -88,8 +92,9 @@ export const ResourceCard = ({ resource }) => {
       })
     }
   }, [resource._id, userContext.loading, userContext.user.bookmark.resource])
+  */}
 
-  const handleBookmarkBtn = () => {
+  {/* const handleBookmarkBtn = () => {
     const formData = {
       type: resource.objType,
       typeId: resource._id,
@@ -102,6 +107,7 @@ export const ResourceCard = ({ resource }) => {
       setBookmarkStatus(false)
     }
   }
+  */}
 
   const open = Boolean(moreOption)
   const handleClose = () => {
@@ -119,7 +125,7 @@ export const ResourceCard = ({ resource }) => {
     setExpanded(!expanded)
   }
 
-  const handleCommentSend = async () => {
+  {/*const handleCommentSend = async () => {
     if (comment.length > 0) {
       await resourceContext.addComment(resource._id, authContext.user._id, comment)
     }
@@ -129,27 +135,30 @@ export const ResourceCard = ({ resource }) => {
     const response = await resourceContext.countShare(resource._id)
     setShareCount(response.shareCount)
     console.log(response)
-  }
+  }*/}
+
+  
+
   return (
     <>
       {showResource && (
-        <ResourceModal
+        <AdsModal
           show={showResource}
           handleModal={handleModalResource}
           resourceFunction={resourceContext.updateResource}
           modalTitle="Update resource"
-          resource={resource}
+          ads={resource}
         />
       )}
       <Card variant="elevation" elevation={3} className="mb-3">
         <CardHeader
           className="pt-3 pb-0"
-          avatar={
+          /*avatar={
             <Avatar
               alt={resource.user.name}
               src={`${API}/pic/user/${resource.user._id}`}
             />
-          }
+          }*/
           action={
             <>
               <IconButton aria-label="settings" onClick={handleMoreOption}>
@@ -176,33 +185,27 @@ export const ResourceCard = ({ resource }) => {
                     Delete
                   </MenuItem>
                 ) : null}
-                <MenuItem onClick={handleClose}>Share</MenuItem>
-                <MenuItem onClick={handleClose}>Bookmark</MenuItem>
-
-                <MenuItem onClick={handleClose}>Report resource</MenuItem>
               </Menu>
             </>
           }
           title={
             <b
               style={{ cursor: "pointer" }}
-              onClick={() => {
-                history.push(`/profile/${resource.user._id}`)
-              }}
+              
             >
-              {resource.user.name}
+              {resource.title}
             </b>
           }
-          subheader={<Moment fromNow>{resource.createdAt}</Moment>}
+          subheader={<a href={resource.link} style={{ cursor: "pointer"}}>{resource.link}</a>}
         />
 
         <CardContent>
-          <Typography variant="subtitle2" component="p">
+          {/*<Typography variant="subtitle2" component="p">
             <b>{resource.title}</b>
-          </Typography>
-          <Typography variant="subtitle2" component="p">
+          </Typography>*/}
+          {/*<Typography variant="subtitle2" component="p">
             {resource.link}
-          </Typography>
+        </Typography>*/}
         </CardContent>
         {resource.picture && (
           <img width="100%" src={`/${resource.picture}`} alt={resource.picture} />

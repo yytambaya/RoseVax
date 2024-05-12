@@ -23,6 +23,7 @@ import {
   faHandsHelping,
 } from "@fortawesome/free-solid-svg-icons"
 import { FeedbackModal } from "../../pages/Modals/FeedbackModal"
+import { FolderOpen, NotInterestedRounded, NotificationImportant, Poll } from "@material-ui/icons"
 
 const currentTab = (history, path) => {
   if (history.location.pathname === path) {
@@ -70,7 +71,7 @@ const Header = ({ history }) => {
               {/*<img src={require('../../../assets/logo.jpg')} alt="logo" height="40px" />*/} 
               <Typography variant="h6" id="header-name">
                 Nile University
-              </Typography>*/}
+              </Typography>
             </Button>
           </div>
           <div className="header-part-2">
@@ -86,35 +87,39 @@ const Header = ({ history }) => {
                 </Link>
               </Grid>
               <Grid item>
-                <Link to="/blogs">
+                <Link to="/announcements">
                   <IconButton>
-                    <FontAwesomeIcon
+                    <NotificationImportant/>
+                    {/*<FontAwesomeIcon
                       icon={faBookReader}
-                      style={currentTab(history, "/blogs")}
-                    />
+                      style={currentTab(history, "/announcements")}
+                    />*/}
                   </IconButton>
                 </Link>
               </Grid>
               <Grid item>
-                <Link to="/ads">
+                <Link to="/resources">
                   <IconButton>
-                    <FontAwesomeIcon
+                    <FolderOpen/>
+                    {/*<FontAwesomeIcon
                       icon={faHandsHelping}
-                      style={currentTab(history, "/ads")}
-                    />
+                      style={currentTab(history, "/resources")}
+                    />*/}
                   </IconButton>
                 </Link>
               </Grid>
               <Grid item>
-                <Link to="/jobs-and-placements">
+                <Link to="/polls">
                   <IconButton>
-                    <FontAwesomeIcon
+                    <Poll/>
+                    {/*<FontAwesomeIcon
                       icon={faUserGraduate}
-                      style={currentTab(history, "/jobs-and-placements")}
-                    />
+                      style={currentTab(history, "/polls")}
+                  />*/}
                   </IconButton>
                 </Link>
               </Grid>
+              
             </Grid>
           </div>
 
@@ -166,14 +171,14 @@ const Header = ({ history }) => {
               >
                 Settings & Privacy
               </MenuItem>
-              <MenuItem
+              {/*<MenuItem
                 onClick={() => {
                   handleFeedback()
                   handleClose()
                 }}
               >
                 Give Feedback
-              </MenuItem>
+              </MenuItem>*/}
               <MenuItem
                 onClick={() => {
                   authContext.signoutUser()

@@ -137,17 +137,12 @@ import {
             show={showPost}
             handleModal={handleModalPost}
             postFunction={postContext.updatePost}
-            modalTitle="Update post"
+            modalTitle="Update announcement"
             post={post}
           />
         )}
         <CardHeader
-          avatar={
-            <Avatar
-              alt={post.user.name}
-              src={`${API}/pic/user/${post.user._id}`}
-            />
-          }
+          
           action={
             <>
               <IconButton aria-label="settings" onClick={handleMoreOption}>
@@ -188,7 +183,7 @@ import {
                 history.push(`/profile/${post.user._id}`)
               }}
             >
-              {post.user.name}
+              {post.content}
             </b>
           }
           subheader={<Moment fromNow>{post.createdAt}</Moment>}
@@ -199,7 +194,7 @@ import {
         )*/}
         <CardContent className="py-1">
           <Typography variant="body1" component="p">
-            {post.content}
+            {"posted by " + post.user.name}
           </Typography>
         </CardContent>
         {/*<CardActions disableSpacing className="my-0 py-0">

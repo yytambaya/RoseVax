@@ -26,13 +26,14 @@ export const UserState = ({ children }) => {
   }
   const [state, dispatch] = useReducer(UserReducer, initialState)
   const authContext = useContext(AuthContext)
+
   const getAllUsers = async () => {
     try {
       dispatch({
         type: USER_LOADING,
         payload: true,
       })
-      const response = await axios.get(`${API}/users`, {
+      const response = await axios.get(`${API}/admin/users`, {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("_token"))}`,
         },
@@ -56,7 +57,7 @@ export const UserState = ({ children }) => {
         type: USER_LOADING,
         payload: true,
       })
-      const response = await axios.get(`${API}/user/${userId}`, {
+      const response = await axios.get(`${API}/admin/user/${userId}`, {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("_token"))}`,
         },
@@ -79,7 +80,7 @@ export const UserState = ({ children }) => {
   const updateUserProfileDetails = async (userId, formData) => {
     try {
       // console.log(formData)
-      const response = await axios.put(`${API}/user/${userId}`, formData, {
+      const response = await axios.put(`${API}/admin/user/${userId}`, formData, {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("_token"))}`,
         },

@@ -46,7 +46,7 @@ export const AdsCard = ({ ads }) => {
           show={showAds}
           handleModal={handleModalAds}
           postFunction={adsContext.updatePost}
-          modalTitle="Update post"
+          modalTitle="Update announcement"
           post={ads}
         />
       )}

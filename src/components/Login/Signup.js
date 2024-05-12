@@ -124,16 +124,16 @@ export const Signup = () => {
                       spacing={3}
                     >
                       <Grid item xs={6}>
-                        <TextField
+                        {/*<TextField
                           name="rollno"
                           variant="outlined"
                           label="Roll no"
                           size="small"
                           value={inputValues.rollno}
                           onChange={handleChange}
-                        />
+                        />*/}
                       </Grid>
-                      <Grid item xs={6}>
+                      {/*<Grid item xs={6}>
                         <TextField
                           name="collegeId"
                           label="College Id"
@@ -179,7 +179,7 @@ export const Signup = () => {
                           onChange={handleChange}
                           style={{ width: "auto" }}
                         />
-                      </Grid>
+                        </Grid>*/}
                     </Grid>
                     <Grid item container>
                       <TextField

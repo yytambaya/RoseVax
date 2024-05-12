@@ -76,7 +76,7 @@ export const PollCard = () => {
     }
   }
   return (
-    <div>
+    <div className=" w-75">
       {pollContext.loading ? (
         LoadingPoll()
       ) : (
