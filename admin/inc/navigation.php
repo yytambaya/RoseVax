@@ -39,11 +39,20 @@
                         </p>
                       </a>
                     </li>
+                    
                     <li class="nav-item dropdown">
                       <a href="<?php echo base_url ?>admin/?page=individual" class="nav-link nav-individual">
                         <i class="nav-icon fas fa-user-friends"></i>
                         <p>
                         Individuals List
+                        </p>
+                      </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a href="<?php echo base_url ?>admin/?page=individual-schedules" class="nav-link nav-individual">
+                        <i class="nav-icon fas fa-user-friends"></i>
+                        <p>
+                          Schedules & Reminders
                         </p>
                       </a>
                     </li>
