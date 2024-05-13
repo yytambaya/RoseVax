@@ -57,7 +57,7 @@ export const AuthState = ({ children }) => {
         payload: true,
       })
       const response = await axios.post(
-        `${API}/admin-auth/signup`,
+        `${API}/signup`,
         JSON.stringify(signupData),
         {
           headers: {
@@ -87,7 +87,7 @@ export const AuthState = ({ children }) => {
         payload: true,
       })
       const response = await axios.post(
-        `${API}/admin-auth/signin`,
+        `${API}/signin`,
         JSON.stringify(signinData),
         {
           headers: {

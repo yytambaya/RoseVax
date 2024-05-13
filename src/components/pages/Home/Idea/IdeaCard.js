@@ -158,10 +158,10 @@ import {
                   onClose={handleClose}
                   TransitionComponent={Fade}
                 >
-                  {authContext.user._id === idea.user._id ? (
+                  {authContext.user._id === idea.user._id || true ? (
                     <MenuItem onClick={handleModalIdea}>Edit</MenuItem>
                   ) : null}
-                  {authContext.user._id === idea.user._id ? (
+                  {authContext.user._id === idea.user._id || true ? (
                     <MenuItem
                       onClick={() => {
                         ideaContext.deleteIdea(authContext.user._id, idea._id)

@@ -22,6 +22,7 @@ export const Login = () => {
   const formData = {
     email: inputValues.email,
     password: inputValues.password,
+    role: 2
   }
   const handleFormSubmit = async (e) => {
     e.preventDefault()

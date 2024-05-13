@@ -33,7 +33,7 @@ export const UserState = ({ children }) => {
         type: USER_LOADING,
         payload: true,
       })
-      const response = await axios.get(`${API}/admin/users`, {
+      const response = await axios.get(`${API}/users`, {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("_token"))}`,
         },
@@ -57,7 +57,7 @@ export const UserState = ({ children }) => {
         type: USER_LOADING,
         payload: true,
       })
-      const response = await axios.get(`${API}/admin/user/${userId}`, {
+      const response = await axios.get(`${API}/user/${userId}`, {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("_token"))}`,
         },
@@ -80,7 +80,7 @@ export const UserState = ({ children }) => {
   const updateUserProfileDetails = async (userId, formData) => {
     try {
       // console.log(formData)
-      const response = await axios.put(`${API}/admin/user/${userId}`, formData, {
+      const response = await axios.put(`${API}/user/${userId}`, formData, {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("_token"))}`,
         },
