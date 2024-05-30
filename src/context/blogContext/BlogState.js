@@ -40,7 +40,7 @@ export const BlogState = ({ children }) => {
     } catch (error) {
       dispatch({
         type: BLOG_ERROR,
-        payload: error.response.data.errorMsg,
+        payload: error?.response?.data?.errorMsg,
       })
     }
   }

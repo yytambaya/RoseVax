@@ -36,7 +36,7 @@ export const PollCard = () => {
   }, [])
   // console.log(pollContext.polls)
 
-  const handlePollClick = async (e, typeOf, pollId) => {
+  const handlePollClick = async (e, typeOf, pollId, option) => {
     setResponseValue({
       ...responseValue,
       loading: true,
@@ -44,7 +44,7 @@ export const PollCard = () => {
     try {
       let response
       if (typeOf === "yes") {
-        response = await pollContext.markPollYes(authContext.user._id, pollId)
+        response = await pollContext.markPollYes(authContext.user._id, pollId, option)
       }
       if (typeOf === "no") {
         response = await pollContext.markPollNo(authContext.user._id, pollId)

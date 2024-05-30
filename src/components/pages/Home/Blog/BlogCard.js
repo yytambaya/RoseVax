@@ -74,7 +74,7 @@ export const BlogCard = ({ blog }) => {
       setVote(false)
     }
   }
-  useEffect(() => {
+  /*useEffect(() => {
     if (!userContext.loading) {
       // console.log(userContext.user.bookmark.blog)
 
@@ -87,7 +87,7 @@ export const BlogCard = ({ blog }) => {
         return 0
       })
     }
-  }, [blog._id, userContext.loading, userContext.user.bookmark.blog])
+  }, [blog._id, userContext.loading, userContext.user.bookmark.blog])*/
 
   const handleBookmarkBtn = () => {
     const formData = {

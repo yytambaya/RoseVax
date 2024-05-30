@@ -43,7 +43,7 @@ export const PostState = ({ children }) => {
       // console.log(error.response)
       dispatch({
         type: POSTS_ERROR,
-        payload: error.response.data.errorMsg,
+        payload: error?.response?.data?.errorMsg,
       })
     }
   }

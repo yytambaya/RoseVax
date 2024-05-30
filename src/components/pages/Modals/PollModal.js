@@ -16,7 +16,13 @@ export const PollModal = ({
   const [preview, setPreview] = useState(poll === undefined ? "" : poll.picture)
   const [content, setContent] = useState(poll === undefined ? "" : poll.content)
   const [title, setTitle] = useState(poll === undefined ? "" : poll.title)
-  const [pollBody, setPollBody] = useState(poll === undefined ? "" : poll.poll)
+  const [option1, setOption1] = useState(poll === undefined ? "" : poll.option1.name)
+  const [option2, setOption2] = useState(poll === undefined ? "" : poll.option2.name)
+  const [option3, setOption3] = useState(poll === undefined ? "" : poll.option3.name)
+  const [option4, setOption4] = useState(poll === undefined ? "" : poll.option4.name)
+  const [option5, setOption5] = useState(poll === undefined ? "" : poll.option5.name)
+  const [option6, setOption6] = useState(poll === undefined ? "" : poll.option6.name)
+  const [pollBody, setPollBody] = useState(poll === undefined ? "" : poll.poll.pollBody)
   const [titleError, setTitleError] = useState("")
   const [pollBodyError, setPollBodyError] = useState("")
 
@@ -29,10 +35,24 @@ export const PollModal = ({
       formData.append("user", authContext.user._id)
       formData.append("title", title)
       formData.append("poll", pollBody)
+      formData.append("option1", option1)
+      formData.append("option2", option2)
+      formData.append("option3", option3)
+      formData.append("option4", option4)
+      formData.append("option5", option5)
+      formData.append("option6", option6)
+      
+      
       const pollData = {
         user: authContext.user._id,
         title,
         poll: pollBody,
+        option1,
+        option2,
+        option3,
+        option4,
+        option5,
+        option6
       }
       poll
         ? await pollFunction(authContext.user._id, poll._id, pollData)
@@ -94,6 +114,64 @@ export const PollModal = ({
                   value={pollBody}
                   onChange={(e) => setPollBody(e.target.value)}
                 />
+                <TextField
+                  className="mb-3"
+                  variant="outlined"
+                  placeholder="Title"
+                  size="small"
+                  fullWidth
+                  value={option1}
+                  onChange={(e) => setOption1(e.target.value)}
+                />
+                <TextField
+                  className="mb-3"
+                  variant="outlined"
+                  placeholder="Title"
+                  size="small"
+                  fullWidth
+                  value={option2}
+                  onChange={(e) => setOption2(e.target.value)}
+                />
+                <TextField
+                  className="mb-3"
+                  variant="outlined"
+                  placeholder="Title"
+                  size="small"
+                  fullWidth
+                  value={option3}
+                  onChange={(e) => setOption3(e.target.value)}
+                />
+                
+                <TextField
+                  className="mb-3"
+                  variant="outlined"
+                  placeholder="Title"
+                  size="small"
+                  fullWidth
+                  value={option4}
+                  onChange={(e) => setOption4(e.target.value)}
+                />
+                
+                <TextField
+                  className="mb-3"
+                  variant="outlined"
+                  placeholder="Title"
+                  size="small"
+                  fullWidth
+                  value={option5}
+                  onChange={(e) => setOption5(e.target.value)}
+                />
+                
+                <TextField
+                  className="mb-3"
+                  variant="outlined"
+                  placeholder="Title"
+                  size="small"
+                  fullWidth
+                  value={option6}
+                  onChange={(e) => setOption6(e.target.value)}
+                />
+                
                 {pollBodyError && <p className=" text-danger mb-3">{pollBodyError}</p>}
                 
               </Grid>

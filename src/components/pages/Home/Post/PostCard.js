@@ -66,7 +66,7 @@ import {
       handleClose()
       setShowPost(!showPost)
     }
-    useEffect(() => {
+    /*useEffect(() => {
       if (!userContext.loading) {
         // console.log(userContext.user.bookmark.post)
         userContext.user.bookmark.post.forEach((element) => {
@@ -88,7 +88,7 @@ import {
         //   return 0
         // })
       }
-    }, [post._id, userContext.loading, userContext.user.bookmark.post])
+    }, [post._id, userContext.loading, userContext.user.bookmark.post])*/
     useEffect(() => {
       // post.likes.filter((like) => {
       //   if (like === authContext.user._id) {
@@ -114,7 +114,8 @@ import {
         setLikeStatus(false)
       }
     }
-    const handleBookmarkBtn = () => {
+
+    {/*const handleBookmarkBtn = () => {
       const formData = {
         type: post.objType,
         typeId: post._id,
@@ -129,7 +130,8 @@ import {
     }
     const handleCommentSend = async () => {
       await postContext.addComment(post._id, authContext.user._id, comment)
-    }
+    }*/}
+
     return (
       <Card variant="elevation" elevation={3} className="mb-3">
         {showPost && (

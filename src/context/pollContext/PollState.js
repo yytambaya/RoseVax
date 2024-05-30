@@ -71,11 +71,11 @@ export const PollState = ({ children }) => {
     }
   }
 
-  const markPollYes = async (userId, pollId) => {
+  const markPollYes = async (userId, pollId, option) => {
     try {
       const response = await axios.put(
         `${API}/poll/agree/${userId}`,
-        { pollId },
+        { pollId, option},
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(
